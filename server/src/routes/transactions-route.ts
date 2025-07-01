@@ -1,16 +1,16 @@
 import { FastifyInstance } from 'fastify';
-import { TransactionRepositoryInMemory } from '../repositories/transaction-repository-in-memory.js';
-import { CategoryRepositoryInMemory } from '../repositories/category-repository-in-memory.js';
-import { BankRepositoryInMemory } from '../repositories/bank-repository-in-memory.js';
+import { TransactionRepositoryPrisma } from '../repositories/transaction-repository-prisma.js';
+import { CategoryRepositoryPrisma } from '../repositories/category-repository-prisma.js';
+import { BankRepositoryPrisma } from '../repositories/bank-repository-prisma.js';
 import { CreateTransactionService } from '../services/transactions/create-transaction-service.js';
 import { GetTransactionService } from '../services/transactions/get-transaction-service.js';
 import { UpdateTransactionService } from '../services/transactions/update-transaction-service.js';
 import { GetAllTransactionsService } from '../services/transactions/get-all-transactions-service.js';
 import { DeleteTransactionService } from '../services/transactions/delete-transaction-service.js';
 
-const categoryRepository = new CategoryRepositoryInMemory();
-const bankRepository = new BankRepositoryInMemory();
-const transactionRepository = new TransactionRepositoryInMemory(bankRepository, categoryRepository);
+const categoryRepository = new CategoryRepositoryPrisma();
+const bankRepository = new BankRepositoryPrisma();
+const transactionRepository = new TransactionRepositoryPrisma(bankRepository, categoryRepository);
 const createTransactionService = new CreateTransactionService(transactionRepository);
 const getTransactionService = new GetTransactionService(transactionRepository);
 const getAllTransactionsService = new GetAllTransactionsService(transactionRepository);

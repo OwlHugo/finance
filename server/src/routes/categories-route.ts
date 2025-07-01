@@ -1,12 +1,12 @@
 import { FastifyInstance } from 'fastify'
-import { CategoryRepositoryInMemory } from '../repositories/category-repository-in-memory.js'
+import { CategoryRepositoryPrisma } from '../repositories/category-repository-prisma.js'
 import { CreateCategoryService } from '../services/categories/create-category-service.js'
 import { GetCategoryService } from '../services/categories/get-category-service.js'
 import { GetAllCategoriesService } from '../services/categories/get-all-categories-service.js'
 import { UpdateCategoryService } from '../services/categories/update-category-service.js'
 import { DeleteCategoryService } from '../services/categories/delete-category-service.js'
 
-const categoryRepository = new CategoryRepositoryInMemory()
+const categoryRepository = new CategoryRepositoryPrisma()
 const createCategoryService = new CreateCategoryService(categoryRepository)
 const getCategoryService = new GetCategoryService(categoryRepository)
 const getAllCategoriesService = new GetAllCategoriesService(categoryRepository)

@@ -1,12 +1,12 @@
 import { FastifyInstance } from "fastify";
-import { BankRepositoryInMemory } from "../repositories/bank-repository-in-memory.js";
+import { BankRepositoryPrisma } from "../repositories/bank-repository-prisma.js";
 import { CreateBankService } from "../services/banks/create-bank-service.js";
 import { GetBankService } from "../services/banks/get-bank-service.js";
 import { GetAllBanksService } from "../services/banks/get-all-banks-service.js";
 import { UpdateBankService } from "../services/banks/update-bank-service.js";
 import { DeleteBankService } from "../services/banks/delete-bank-service.js";
 
-const bankRepository = new BankRepositoryInMemory();
+const bankRepository = new BankRepositoryPrisma();
 const createBankService = new CreateBankService(bankRepository);
 const getBankService = new GetBankService(bankRepository);
 const getAllBanksService = new GetAllBanksService(bankRepository);
