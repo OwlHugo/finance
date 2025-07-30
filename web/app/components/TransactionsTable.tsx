@@ -1,3 +1,4 @@
+import React from "react";
 import { ShoppingCart } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { formatCurrency } from "../utils/formatCurrency";
@@ -27,9 +28,8 @@ export default function TransactionsTable({ transactions }: TransactionsTablePro
               </thead>
               <tbody>
                 {transactions.map((t, idx) => (
-                  <>
+                  <React.Fragment key={t.id || idx}>
                     <tr
-                      key={idx}
                       className="bg-zinc-950 text-zinc-200"
                     >
                       <td className="bg-zinc-950 rounded-l-xl min-w-[120px]">
