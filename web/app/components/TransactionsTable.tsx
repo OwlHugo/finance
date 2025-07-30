@@ -66,7 +66,7 @@ export default function TransactionsTable({ transactions }: TransactionsTablePro
                     <tr>
                       <td colSpan={6} className="bg-zinc-900 h-2"></td>
                     </tr>
-                  </>
+                  </React.Fragment>
                 ))}
               </tbody>
             </table>
