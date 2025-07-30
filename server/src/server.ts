@@ -1,11 +1,18 @@
 
 import Fastify from 'fastify'
+import cors from '@fastify/cors'
 import { categoriesRoutes } from './routes/categories-route.js'
 import { banksRoutes } from './routes/banks-route.js'
 import { transactionsRoutes } from './routes/transactions-route.js'
 
 const fastify = Fastify({
   logger: true
+})
+
+// Configurar CORS
+await fastify.register(cors, {
+  origin: ['http://localhost:3001', 'http://localhost:3003', 'http://localhost:3000'],
+  credentials: true
 })
 
 const versionApi = "v1"
